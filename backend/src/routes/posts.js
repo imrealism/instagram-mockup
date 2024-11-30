@@ -3,11 +3,12 @@ const router = express.Router();
 const postsController = require('../controllers/posts');
 const { protected } = require('../middleware/auth');
 
-// All post routes are protected
 router.use(protected);
 
-router.get('/', postsController.getFeedPosts);
+router.get('/:postId', postsController.getPost);
+router.post('/', postsController.createPost);
 router.post('/:postId/like', postsController.likePost);
-router.post('/:postId/comment', postsController.addComment);
+router.post('/:postId/comments', postsController.addComment);
+router.delete('/:postId/comments/:commentId', postsController.deleteComment);
 
 module.exports = router;
