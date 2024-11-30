@@ -1,36 +1,24 @@
 # Instagram Mockup
 
-A mockup Instagram-like website with React frontend and Node.js backend.
+A full-stack Instagram clone built with React and Node.js.
 
 ## Project Structure
 
 ```
-├── frontend/          # React frontend application
-└── backend/           # Node.js backend application
+├── frontend/     # React application
+└── backend/      # Node.js server
 ```
-
-## Features (Planned)
-
-- User authentication (mock)
-- Feed page with mock posts
-- Create post functionality
-- Like and comment features
-- User profiles
-- Stories feature
-- Direct messaging interface
 
 ## Getting Started
 
-### Frontend
+1. Install dependencies:
 ```bash
-cd frontend
 npm install
-npm start
 ```
 
-### Backend
+2. Start the development servers:
 ```bash
-cd backend
-npm install
 npm run dev
 ```
+
+This will start both the frontend and backend servers concurrently.
