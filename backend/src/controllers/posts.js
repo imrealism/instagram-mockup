@@ -1,9 +1,33 @@
 const mockPosts = require('../data/mockPosts');
 
 const postsController = {
-  getFeedPosts: (req, res) => {
-    // In a real app, we would fetch posts based on user's following
-    // and paginate the results
+  createPost: async (req, res) => {
+    const { caption, imageUrl } = req.body;
+    const userId = req.user.id;
+
+    const newPost = {
+      id: mockPosts.length + 1,
+      user: {
+        id: userId,
+        username: req.user.username,
+        profilePicture: `https://api.multiavatar.com/${req.user.username}.svg`
+      },
+      image: imageUrl || 'https://picsum.photos/600/600?random=' + Date.now(),
+      caption,
+      likes: 0,
+      comments: [],
+      createdAt: new Date().toISOString()
+    };
+
+    mockPosts.unshift(newPost);
+
+    res.status(201).json({
+      success: true,
+      post: newPost
+    });
+  },
+
+  getAllPosts: (req, res) => {
     res.json({
       success: true,
       posts: mockPosts
@@ -21,7 +45,6 @@ const postsController = {
       });
     }
 
-    // Toggle like
     post.likes += 1;
 
     res.json({
